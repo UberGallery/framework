@@ -1,0 +1,27 @@
+{
+    "name": "ubergallery/framework",
+    "description": "UberGallery main framework components",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Kankiewicz",
+            "email": "Chris@ChrisKankiewicz.com"
+        }
+    ],
+    "support": {
+        "email": "UberGallery@GoogleGroups.com",
+        "issues": "https://github.com/UberGallery/uber-framework/issues"
+    },
+    "require": {
+        "php": ">=5.5",
+        "ext-imagick": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Uber\\": "src/"
+        }
+    }
+}
