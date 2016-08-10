@@ -26,8 +26,8 @@ class Image {
      * @param int    $width  Resized image width
      * @param int    $height Resized image height
      */
-    public function __construct($path, $width = 0, $height = 0) {
-
+    public function __construct($path, $width = 0, $height = 0)
+    {
         if (! $this->isImage($path)) {
             throw new Exception('File ' . $path . ' is not a valid image');
         }
@@ -44,7 +44,6 @@ class Image {
 
         list($this->width, $this->height) = getimagesizefromstring($this->contents);
         $this->mimeType = finfo_buffer(finfo_open(FILEINFO_MIME_TYPE), $this->contents);
-
     }
 
     /**
@@ -53,7 +52,8 @@ class Image {
      *
      * @return string Binary string of image data
      */
-    public function contents() {
+    public function contents()
+    {
         return $this->contents;
     }
 
@@ -62,7 +62,8 @@ class Image {
      *
      * @return string Base64 encoded string of image data
      */
-    public function base64() {
+    public function base64()
+    {
         return base64_encode($this->contents);
     }
 
@@ -71,7 +72,8 @@ class Image {
      *
      * @return string Stream wrapped string of image data
      */
-    public function stream() {
+    public function stream()
+    {
         return 'data://' . $this->mimeType . ';base64,' . $this->base64();
     }
 
@@ -80,7 +82,8 @@ class Image {
      *
      * @return int Image width
      */
-    public function width() {
+    public function width()
+    {
         return $this->width;
     }
 
@@ -89,11 +92,13 @@ class Image {
      *
      * @return int Image height
      */
-    public function height() {
+    public function height()
+    {
         return $this->height;
     }
 
-    public function dimensions() {
+    public function dimensions()
+    {
         return $this->width . 'x' . $this->height;
     }
 
@@ -102,7 +107,8 @@ class Image {
      *
      * @return string Image mime type
      */
-    public function mimeType() {
+    public function mimeType()
+    {
         return $this->mimeType;
     }
 
@@ -111,7 +117,8 @@ class Image {
      *
      * @return array Exif data
      */
-    public function exif() {
+    public function exif()
+    {
         return exif_read_data($this->stream());
     }
 
@@ -123,7 +130,8 @@ class Image {
      *
      * @return Image         Resized Image object
      */
-    public function resize($width, $height) {
+    public function resize($width, $height)
+    {
         return new static($this->stream(), $width, $height);
     }
 
@@ -134,7 +142,8 @@ class Image {
      *
      * @return boolean       True if file is a valid image, otherwise false
      */
-    protected function isImage($path) {
+    protected function isImage($path)
+    {
         $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $path);
         return in_array($mimeType, ['image/png', 'image/jpeg', 'image/jpg']);
     }

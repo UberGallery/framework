@@ -2,8 +2,6 @@
 
 namespace Uber;
 
-use Uber\Album;
-
 class Gallery {
 
     /** @var array Array of Albums */
@@ -14,19 +12,21 @@ class Gallery {
      *
      * @param string $albums Array of album directory paths
      */
-    public function __construct(array $albums = []) {
+    public function __construct(array $albums = [])
+    {
         foreach ($albums as $album) $this->add($album);
     }
 
     /**
-     * Adds a directory to the Gallery as an album
+     * Adds an album to the Gallery
      *
-     * @param string  $image Directory path
+     * @param object  $album Instance of Uber\Album
      *
      * @return object        This Uber\Gallery object
      */
-    public function add($path) {
-        $this->albums[] = new Album($path);
+    public function add(Album $album)
+    {
+        $this->albums[] = $album;
         return $this;
     }
 
@@ -35,7 +35,8 @@ class Gallery {
      *
      * @return array Array of Albums
      */
-    public function albums() {
+    public function albums()
+    {
         return $this->albums;
     }
 

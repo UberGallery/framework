@@ -2,42 +2,35 @@
 
 namespace Uber;
 
-use Uber\Image;
 use Exception;
 
 class Album {
 
-    /** @var array Array of Images */
+    /** @var array Array of Uber\Image objects */
     protected $images;
 
     /**
      * Uber\Album constructor, runs on object creation
      *
-     * @param string $path Path to directory
+     * @param array $images Array of Uber\Image objects
      */
-    public function __construct($path)
+    public function __construct(array $images = [])
     {
-        foreach (new \DirectoryIterator($path) as $file) {
-            if ($file->isDot()) continue;
-            $this->add($file->getPathname());
+        foreach ($images as $image) {
+            $this->add($image);
         }
     }
 
     /**
      * Adds an individual image to the Album
      *
-     * @param  string $image Image path
+     * @param  object $image Instance of Uber\Image
      *
      * @return object        This Uber\Album object
      */
-    public function add($path)
+    public function add(Image $image)
     {
-        try {
-            $this->images[] = new Image($path);
-        } catch (Exception $e) {
-            // Fo'get about it...
-        }
-
+        $this->images[] = $image;
         return $this;
     }
 
@@ -46,7 +39,8 @@ class Album {
      *
      * @return array Array of Images
      */
-    public function images() {
+    public function images()
+    {
         return $this->images;
     }
 
@@ -55,7 +49,8 @@ class Album {
      *
      * @return object This Uber\Album object
      */
-    public function sort() {
+    public function sort()
+    {
         // TODO: Sort the images array
         return $this;
     }
