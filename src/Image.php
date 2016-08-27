@@ -19,6 +19,9 @@ class Image {
     /** @var string Image mime type */
     protected $mimeType;
 
+    /** @var string Image title */
+    protected $title;
+
     /**
      * Uber\Image constructor, runs on object creation
      *
@@ -26,7 +29,7 @@ class Image {
      * @param int    $width  Resized image width
      * @param int    $height Resized image height
      */
-    public function __construct($path, $width = 0, $height = 0)
+    public function __construct($path, $width = 0, $height = 0, $title = null)
     {
         if (! $this->isImage($path)) {
             throw new Exception('File ' . $path . ' is not a valid image');
@@ -44,6 +47,10 @@ class Image {
 
         list($this->width, $this->height) = getimagesizefromstring($this->contents);
         $this->mimeType = finfo_buffer(finfo_open(FILEINFO_MIME_TYPE), $this->contents);
+
+        if (isset($title)) {
+            $this->title = $title;
+        }
     }
 
     /**
@@ -133,6 +140,28 @@ class Image {
     public function resize($width, $height)
     {
         return new static($this->stream(), $width, $height);
+    }
+
+    /**
+     * Get the image title
+     *
+     * @return string Image title
+     */
+    public function title()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set the image title
+     *
+     * @param string      $title Image title
+     * @return Uber\Image        This Uber\Image object
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
     }
 
     /**

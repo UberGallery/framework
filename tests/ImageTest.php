@@ -69,6 +69,25 @@ class ImageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(120, $jpegThumb->height());
     }
 
+    public function test_it_has_a_title()
+    {
+        $png = new Uber\Image(__DIR__ . '/test_files/test.png', 0, 0, 'PNG Title');
+        $this->assertEquals('PNG Title', $png->title());
+
+        $jpg = new Uber\Image(__DIR__ . '/test_files/test.jpg', 0, 0, 'JPG Title');
+        $this->assertEquals('JPG Title', $jpg->title());
+
+        $jpeg = new Uber\Image(__DIR__ . '/test_files/test.jpeg', 0, 0, 'JPEG Title');
+        $this->assertEquals('JPEG Title', $jpeg->title());
+    }
+
+    public function test_it_returns_null_if_it_doesnt_have_a_title()
+    {
+        $this->assertNull($this->png->title());
+        $this->assertNull($this->jpg->title());
+        $this->assertNull($this->jpeg->title());
+    }
+
     /** @test @expectedException Exception */
     public function test_throw_exception_for_invalid_file_type()
     {
