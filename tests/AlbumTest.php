@@ -1,7 +1,8 @@
 <?php
 
-class AlbumTest extends PHPUnit_Framework_TestCase {
-
+class AlbumTest extends PHPUnit_Framework_TestCase
+{
+    /** @var Uber\Album Instance of Uber\Album */
     protected $album;
 
     public function setUp()
@@ -23,5 +24,4 @@ class AlbumTest extends PHPUnit_Framework_TestCase {
         $this->album->add(new Uber\Image(__DIR__ . '/test_files/test.png'));
         $this->assertCount(4, $this->album->images());
     }
-
 }

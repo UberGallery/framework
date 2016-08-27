@@ -2,8 +2,6 @@
 
 namespace Uber;
 
-use Exception;
-
 class Album {
 
     /** @var array Array of Uber\Image objects */

@@ -1,7 +1,7 @@
 <?php
 
-class ImageTest extends PHPUnit_Framework_TestCase {
-
+class ImageTest extends PHPUnit_Framework_TestCase
+{
     protected $png;
     protected $jpg;
     protected $jpeg;
@@ -56,7 +56,6 @@ class ImageTest extends PHPUnit_Framework_TestCase {
 
     public function test_image_can_be_resized()
     {
-
         $pngThumb = $this->png->resize(160, 120);
         $this->assertEquals(160, $pngThumb->width());
         $this->assertEquals(120, $pngThumb->height());
@@ -68,13 +67,11 @@ class ImageTest extends PHPUnit_Framework_TestCase {
         $jpegThumb = $this->jpeg->resize(160, 120);
         $this->assertEquals(160, $jpegThumb->width());
         $this->assertEquals(120, $jpegThumb->height());
-
     }
 
     /** @test @expectedException Exception */
-    public function throw_exception_for_invalid_file_type()
+    public function test_throw_exception_for_invalid_file_type()
     {
         $image = new Uber\Image(__DIR__ . '/test_files/test.txt');
     }
-
 }

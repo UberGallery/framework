@@ -1,18 +1,20 @@
 <?php
 
-class GalleryTest extends PHPUnit_Framework_TestCase {
-
+class GalleryTest extends PHPUnit_Framework_TestCase
+{
+    /** @var Uber\Album Instance of Uber\Album */
     protected $album;
+
+    /** @var Uber\Gallery Instance of Uber\Gallery */
     protected $gallery;
 
     public function setUp()
     {
-        $this->album   = new Uber\Album([
+        $this->album = new Uber\Album([
             new Uber\Image(__DIR__ . '/test_files/test.png'),
             new Uber\Image(__DIR__ . '/test_files/test.jpg'),
             new Uber\Image(__DIR__ . '/test_files/test.jpeg')
         ]);
-
         $this->gallery = new Uber\Gallery();
     }
 
@@ -32,5 +34,4 @@ class GalleryTest extends PHPUnit_Framework_TestCase {
         $gallery = new Uber\Gallery([$this->album, $this->album]);
         $this->assertCount(2, $gallery->albums());
     }
-
 }
