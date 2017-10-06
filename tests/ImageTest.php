@@ -1,5 +1,7 @@
 <?php
 
+use UberGallery\Uber;
+
 class ImageTest extends PHPUnit_Framework_TestCase
 {
     protected $png;

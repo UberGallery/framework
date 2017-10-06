@@ -1,5 +1,7 @@
 <?php
 
+use UberGallery\Uber;
+
 class AlbumTest extends PHPUnit_Framework_TestCase
 {
     /** @var Uber\Album Instance of Uber\Album */
