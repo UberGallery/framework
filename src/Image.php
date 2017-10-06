@@ -10,6 +10,9 @@ class Image {
     /** @var string Binary string of image data */
     protected $contents;
 
+    /** @var string Cannonical image file path */
+    protected $path;
+
     /** @var int Image width */
     protected $width;
 
@@ -36,6 +39,8 @@ class Image {
         }
 
         $this->contents = file_get_contents($path);
+
+        $this->path = realpath($path);
 
         if ($width > 0 || $height > 0) {
             $imagick = new Imagick;
