@@ -85,6 +85,36 @@ class Image {
     }
 
     /**
+     * Render the image to the browser.
+     */
+    public function render()
+    {
+        header('Content-Type: ' . $this->mimeType);
+
+        $image = imagecreatefromstring($this->contents);
+
+        switch ($this->mimeType) {
+            case 'image/jpg':
+            case 'image/jpeg':
+                imagejpeg($image);
+                break;
+
+            case 'image/png':
+                imagepng($image);
+                break;
+
+            case 'image/gif':
+                imagegif($image);
+                break;
+
+            default:
+                throw new Exception('Invalid image type');
+        }
+
+        imagedestroy($image);
+    }
+
+    /**
      * Get image width in pixels
      *
      * @return int Image width
