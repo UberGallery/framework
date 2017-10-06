@@ -1,6 +1,6 @@
 <?php
 
-namespace Uber;
+namespace UberGallery\Uber;
 
 class Album {
 
