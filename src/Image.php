@@ -192,7 +192,7 @@ class Image
      *
      * @param string $title Image title
      *
-     * @return Uber\Image This Uber\Image object
+     * @return Image This Uber\Image object
      */
     public function setTitle($title)
     {
