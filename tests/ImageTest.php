@@ -8,8 +8,8 @@ class ImageTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->png  = new Uber\Image(__DIR__ . '/test_files/test.png');
-        $this->jpg  = new Uber\Image(__DIR__ . '/test_files/test.jpg');
+        $this->png = new Uber\Image(__DIR__ . '/test_files/test.png');
+        $this->jpg = new Uber\Image(__DIR__ . '/test_files/test.jpg');
         $this->jpeg = new Uber\Image(__DIR__ . '/test_files/test.jpeg');
     }
 

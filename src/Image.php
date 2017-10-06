@@ -5,8 +5,8 @@ namespace UberGallery\Uber;
 use Exception;
 use Imagick;
 
-class Image {
-
+class Image
+{
     /** @var string Binary string of image data */
     protected $contents;
 
@@ -26,7 +26,7 @@ class Image {
     protected $title;
 
     /**
-     * Uber\Image constructor, runs on object creation
+     * Uber\Image constructor, runs on object creation.
      *
      * @param string $path   Path to image file
      * @param int    $width  Resized image width
@@ -70,7 +70,7 @@ class Image {
     }
 
     /**
-     * Get base64 encoded image contents
+     * Get base64 encoded image contents.
      *
      * @return string Base64 encoded string of image data
      */
@@ -80,7 +80,7 @@ class Image {
     }
 
     /**
-     * Get stream wrapped image contents
+     * Get stream wrapped image contents.
      *
      * @return string Stream wrapped string of image data
      */
@@ -120,7 +120,7 @@ class Image {
     }
 
     /**
-     * Get image width in pixels
+     * Get image width in pixels.
      *
      * @return int Image width
      */
@@ -130,7 +130,7 @@ class Image {
     }
 
     /**
-     * Get image height in pixels
+     * Get image height in pixels.
      *
      * @return int Image height
      */
@@ -145,7 +145,7 @@ class Image {
     }
 
     /**
-     * Get image mime type
+     * Get image mime type.
      *
      * @return string Image mime type
      */
@@ -155,7 +155,7 @@ class Image {
     }
 
     /**
-     * Get image exif data
+     * Get image exif data.
      *
      * @return array Exif data
      */
@@ -165,12 +165,12 @@ class Image {
     }
 
     /**
-     * Get a new instance of the image with specified dimensions
+     * Get a new instance of the image with specified dimensions.
      *
-     * @param  int   $width  Image width
-     * @param  int   $height Image height
+     * @param int $width  Image width
+     * @param int $height Image height
      *
-     * @return Image         Resized Image object
+     * @return Image Resized Image object
      */
     public function resize($width, $height)
     {
@@ -178,7 +178,7 @@ class Image {
     }
 
     /**
-     * Get the image title
+     * Get the image title.
      *
      * @return string Image title
      */
@@ -188,28 +188,30 @@ class Image {
     }
 
     /**
-     * Set the image title
+     * Set the image title.
      *
-     * @param string      $title Image title
-     * @return Uber\Image        This Uber\Image object
+     * @param string $title Image title
+     *
+     * @return Uber\Image This Uber\Image object
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
     /**
-     * Determine if specified file is an image
+     * Determine if specified file is an image.
      *
-     * @param  string  $path Path to file
+     * @param string $path Path to file
      *
-     * @return boolean       True if file is a valid image, otherwise false
+     * @return bool True if file is a valid image, otherwise false
      */
     protected function isImage($path)
     {
         $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $path);
+
         return in_array($mimeType, ['image/png', 'image/jpeg', 'image/jpg']);
     }
-
 }

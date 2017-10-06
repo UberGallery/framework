@@ -2,13 +2,13 @@
 
 namespace UberGallery\Uber;
 
-class Album {
-
+class Album
+{
     /** @var array Array of Uber\Image objects */
     protected $images;
 
     /**
-     * Uber\Album constructor, runs on object creation
+     * Uber\Album constructor, runs on object creation.
      *
      * @param array $images Array of Uber\Image objects
      */
@@ -20,20 +20,21 @@ class Album {
     }
 
     /**
-     * Adds an individual image to the Album
+     * Adds an individual image to the Album.
      *
-     * @param  object $image Instance of Uber\Image
+     * @param object $image Instance of Uber\Image
      *
-     * @return object        This Uber\Album object
+     * @return object This Uber\Album object
      */
     public function add(Image $image)
     {
         $this->images[] = $image;
+
         return $this;
     }
 
-   /**
-     * Get an array of this Album's Images
+    /**
+     * Get an array of this Album's Images.
      *
      * @return array Array of Images
      */
@@ -43,7 +44,7 @@ class Album {
     }
 
     /**
-     * Sort the array of images
+     * Sort the array of images.
      *
      * @return object This Uber\Album object
      */
@@ -52,5 +53,4 @@ class Album {
         // TODO: Sort the images array
         return $this;
     }
-
 }
