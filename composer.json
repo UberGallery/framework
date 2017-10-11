@@ -13,7 +13,7 @@
         "issues": "https://github.com/UberGallery/uber-framework/issues"
     },
     "require": {
-        "php": ">=5.5",
+        "php": ">=5.6",
         "ext-imagick": "*"
     },
     "require-dev": {
